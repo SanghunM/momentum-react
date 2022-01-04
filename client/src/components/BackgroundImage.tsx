@@ -2,9 +2,10 @@ import React from "react";
 
 interface IProps {
   url: string;
+  desc: string;
 }
 
-const BackgroundImage: React.FC<IProps> = ({ url }) => {
+const BackgroundImage: React.FC<IProps> = ({ url, desc }) => {
   //   console.log(`BackgroundImage: ${url}`);
   return (
     <div
@@ -22,6 +23,32 @@ const BackgroundImage: React.FC<IProps> = ({ url }) => {
       }}
     >
       <div className="overlay"></div>
+      <div
+        style={{
+          position: "absolute",
+          left: "1rem",
+          bottom: "2rem",
+          color: "white",
+          textOverflow: "ellipsis",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          width: "20vw",
+        }}
+      >
+        {desc}
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          right: "1rem",
+          bottom: "2rem",
+          color: "white",
+          fontSize: "1.2rem",
+        }}
+      >
+        todo
+      </div>
     </div>
   );
 };

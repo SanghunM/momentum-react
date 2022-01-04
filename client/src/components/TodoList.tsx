@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import Todo from "./Todo";
 
 class TodoList extends PureComponent {
