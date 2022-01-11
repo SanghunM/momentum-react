@@ -39,7 +39,8 @@ code {
   bottom: 0;
 }
 .main-content {
-  width: 100vw;
+  width: 300px;
+  margin: 0 auto;
   height: 100vh;
   color: white;
   position: relative;

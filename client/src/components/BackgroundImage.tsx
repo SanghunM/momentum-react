@@ -32,7 +32,7 @@ const BackgroundImage: React.FC<IProps> = ({ url, desc }) => {
           textOverflow: "ellipsis",
           overflow: "hidden",
           whiteSpace: "nowrap",
-          width: "20vw",
+          width: "10vw",
         }}
       >
         {desc}

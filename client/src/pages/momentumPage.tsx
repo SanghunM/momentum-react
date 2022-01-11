@@ -31,22 +31,18 @@ class MomentumPage extends Component<{}, IState> {
 
   // api
   componentDidMount() {
-    console.log("componentDidMount");
     this.setState(
       {
         isLoading: true,
       },
       () => {
         setTimeout(() => {
-          console.log(this.state.isLoading);
           unsplahshApi("dog").then((res) => {
             this.setState(
               {
                 isLoading: false,
               },
               () => {
-                console.log(this.state.isLoading);
-                console.log(res.results);
                 const newImages: MyImage[] =
                   res.results &&
                   res.results.map(
@@ -59,22 +55,23 @@ class MomentumPage extends Component<{}, IState> {
                         e.alt_description
                       )
                   );
-                console.log(newImages);
+
                 this.setState(
                   {
                     images: newImages,
                   },
                   () => {
                     this.getPrepareForPreLoading();
+                    this.loadingBackgroundImage();
+                    this.setIntervalForBackground();
                   }
                 );
               }
             );
           });
-        }, 2000);
+        }, 1000);
       }
     );
-    this.setIntervalForBackground();
   }
 
   componentDidUpdate() {
@@ -87,6 +84,18 @@ class MomentumPage extends Component<{}, IState> {
     }
   }
 
+  loadingBackgroundImage() {
+    if (this.state.images.length > 0) {
+      const myImage = this.state.images[
+        this.count++ % this.state.images.length
+      ] as MyImage;
+      this.setState({
+        backgroundUrl: myImage.urls.full,
+        desc: myImage.desc,
+      });
+    }
+  }
+
   componentWillUnmount() {
     if (this.intervalRef) {
       clearInterval(this.intervalRef);
@@ -95,16 +104,7 @@ class MomentumPage extends Component<{}, IState> {
 
   setIntervalForBackground() {
     this.intervalRef = setInterval(() => {
-      if (this.state.images.length > 0) {
-        const myImage = this.state.images[
-          this.count++ % this.state.images.length
-        ] as MyImage;
-
-        this.setState({
-          backgroundUrl: myImage.urls.full,
-          desc: myImage.desc,
-        });
-      }
+      this.loadingBackgroundImage();
     }, 10000);
   }
 
@@ -112,7 +112,6 @@ class MomentumPage extends Component<{}, IState> {
     if (this.state.images.length > 0) {
       const head = document.querySelector("head");
       if (head) {
-        console.log(head);
         this.state.images.forEach((image: MyImage) => {
           const link = document.createElement("link");
           link.rel = "preload";
@@ -149,8 +148,8 @@ class MomentumPage extends Component<{}, IState> {
           <Greeting></Greeting>
           <TodoList />
           <Quote />
-          <Weather />
         </div>
+        <Weather />
       </>
     );
   }
