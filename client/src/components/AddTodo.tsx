@@ -1,4 +1,7 @@
 import React, { PureComponent } from "react";
+import Todo from "../model/Todo";
+import TodoComponent from "./Todo";
+import TodoList from "./TodoList";
 
 interface IProps {
   //   addList: (message: string) => void;
@@ -17,6 +20,7 @@ class AddTodo extends PureComponent<IProps, IState> {
   submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.props.setAddingMode(false);
+    console.log(this.state.todoMessage);
     this.props.addHandler(this.state.todoMessage);
     this.setState({
       todoMessage: "",

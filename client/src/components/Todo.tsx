@@ -10,6 +10,12 @@ interface IProps {
   resetActiveKey: () => void;
 }
 
+interface IState {
+  todoMessage: string;
+  done: boolean;
+  isEdit: boolean;
+}
+
 class TodoComponent extends PureComponent<IProps> {
   state = {
     todoMessage: this.props.todo.todoMessage,
@@ -56,7 +62,6 @@ class TodoComponent extends PureComponent<IProps> {
   render() {
     const isEditable =
       this.props.activeyKey === this.props.todo.id || !this.props.activeyKey;
-
     const { updated } = this.props.todo;
     const TextComponent = (
       <>

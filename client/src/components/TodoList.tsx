@@ -13,7 +13,6 @@ interface IState {
   activeKey: string;
   isAddingmode: boolean;
 }
-
 const TodoList: React.FC<Iprops> = ({ presenter }) => {
   const [todos, setTodos] = useState<IState["todos"]>([]);
   const [activeKey, setActiveKey] = useState<IState["activeKey"]>("");
@@ -107,7 +106,6 @@ const TodoList: React.FC<Iprops> = ({ presenter }) => {
       )}
 
       {/* <AddList addList={addList} /> */}
-
       {/* <button
           style={{
             width: "100%",
