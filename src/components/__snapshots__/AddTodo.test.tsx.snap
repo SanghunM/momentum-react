@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTodo Component should render 1`] = `
+<form
+  onSubmit={[Function]}
+  style={
+    Object {
+      "bottom": "2rem",
+      "display": "flex",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <input
+    className="add-list"
+    id="name"
+    onChange={[Function]}
+    placeholder="Input new list..."
+    type="text"
+    value=""
+  />
+  <button>
+    add
+  </button>
+</form>
+`;
